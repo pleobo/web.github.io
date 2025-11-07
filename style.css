@@ -104,11 +104,18 @@ a {
     font-size: 14px;
     font-weight: 500;
     opacity: 0.8;
-    transition: opacity 0.3s;
+    padding: 6px 12px; 
+    border-radius: 20px; 
+    /* Thuộc tính này rất quan trọng để chuyển động mượt mà */
+    transition: all 0.5s ease-in-out; 
+    color: var(--primary-text-color);
 }
 
 .nav-links a:hover {
+    background-color: var(--button-bg-color);
+    color: #333; 
     opacity: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
 .btn-get-started {
@@ -145,38 +152,89 @@ a {
 
 /* KÍCH THƯỚC CỐ ĐỊNH CHO DESKTOP */
 .main-title {
-    font-size: 100px; /* Cố định bằng px */
+    font-size: 80px; /* Cố định bằng px */
     font-weight: 700;
-    line-height: 1.1; 
+    line-height: 2.5; 
     margin-bottom: 0px; 
     text-shadow: 0 0 10px rgba(95, 95, 95, 0.25);
     text-align: center; 
     margin-left: 0; 
+    text-transform: uppercase;
 }
 
 .second-title {
-    font-size: 80px; /* Cố định bằng px */
-    font-weight: 700;
-    line-height: 1.1; 
+    font-size: 60px; /* Cố định bằng px */
+    font-weight: 900;
+    line-height: 1.25; 
     margin-top: 0; 
     margin-bottom: 30px; 
-    text-shadow: 0 0 10px rgba(95, 95, 95, 0.25);
+    /* Bỏ text-shadow cũ để JS quản lý */
+    text-shadow: 0 0 10px rgba(95, 95, 95, 0.25); 
     text-align: center;
+    text-transform: uppercase;
+    
+    /* Thêm transition cho hiệu ứng chuyển đổi mượt mà hơn */
+    transition: text-shadow 0.1s ease-out; 
+    
+    /* Cần thuộc tính này để JS có thể phân tách từng từ */
+    display: block; 
 }
 
 /* Màu chữ nhạt cho phần "Nexus Chain" */
+/* Màu chữ nhạt cho phần "Nexus Chain" */
+/* Màu chữ nhạt cho phần "Nexus Chain" */
 .faded {
     color: var(--faded-text-color);
+    display: inline-block;
+    position: relative;
+    
+    /* Tắt toàn bộ hiệu ứng mask bị lỗi */
+    -webkit-mask-image: none;
+    mask-image: none;
+    
+    /* 1. Tạo bóng đổ MỜ LỚN (Mô phỏng các hạt lớn/mờ mịt xung quanh) */
+    /* text-shadow: [offset-x] [offset-y] [blur-radius] [color] */
+    text-shadow: 
+        /* Bóng chính (tạo độ dày/phân tán) */
+        0 0 10px rgba(255, 255, 255, 0.4),
+        /* Phân tán xa/rộng hơn */
+        -5px 0 15px rgba(255, 255, 255, 0.2), 
+        5px 0 15px rgba(255, 255, 255, 0.2),
+        /* Phân tán ngẫu nhiên trên/dưới */
+        -10px 10px 20px rgba(255, 255, 255, 0.1),
+        10px -10px 20px rgba(255, 255, 255, 0.1),
+        /* Thêm các chấm nhỏ phân tán xa */
+        20px 0 2px rgba(255, 255, 255, 0.05),
+        -20px 0 2px rgba(255, 255, 255, 0.05),
+        -25px 5px 3px rgba(255, 255, 255, 0.08),
+        25px -5px 3px rgba(255, 255, 255, 0.08);
+
+    /* 2. Áp dụng hiệu ứng rung nhẹ (optional) */
+    animation: disintegrate-pulse 4s infinite alternate;
+}
+
+/* Định nghĩa animation để chữ trông động hơn */
+@keyframes disintegrate-pulse {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    100% {
+        transform: translate(0.5px, -0.5px);
+        text-shadow: 
+            0 0 12px rgba(255, 255, 255, 0.5),
+            -4px 1px 16px rgba(255, 255, 255, 0.25);
+    }
 }
 .subtitle {
+    text-transform: uppercase;
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px; 
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 2;
     margin-bottom: 60px;
     opacity: 0.9;
     
-    text-align: center; /* Căn giữa */
+    text-align: left; /* Căn giữa */
     
     max-width: 650px; 
     
@@ -241,7 +299,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: #ffffff;
+    background-color:#ffffff;
     padding: 30px;
     width: 450px;
     border-radius: 20px;
@@ -292,7 +350,7 @@ a {
 }
 
 .inputForm:focus-within {
-    border: 1.5px solid #2d79f3;
+    border: 1.5px solid #141414;
 }
 
 .flex-row {
@@ -319,7 +377,7 @@ a {
 
 .button-submit {
     margin: 20px 0 10px 0;
-    background-color: #151717;
+    background-color: #1a1a1a;
     border: none;
     color: white;
     font-size: 15px;
@@ -331,7 +389,7 @@ a {
     transition: background-color 0.3s;
 }
 .button-submit:hover {
-    background-color: #2d79f3;
+    background-color: #13131380;
 }
 
 .p {
@@ -358,7 +416,7 @@ a {
 }
 
 .btn.google:hover, .btn.apple:hover {
-    border: 1px solid #2d79f3;
+    border: 1px solid #1f1f1f;
 }
 
 .btn.apple svg path {
@@ -381,4 +439,36 @@ a {
     .navbar {
         padding: 20px 20px;
     }
+}
+#fullScreenOverlay {
+    display: none; /* Mặc định ẩn */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95); /* Màu đen gần như tuyệt đối */
+    z-index: 9999; /* Rất cao để đảm bảo phủ hết mọi thứ */
+    
+    /* Căn giữa nội dung bên trong (ví dụ: thông báo đang tải) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Hiệu ứng mờ dần khi hiển thị (tùy chọn) */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Khi hiển thị, set opacity lên 1 */
+#fullScreenOverlay[style*="flex"] {
+    opacity: 1;
+}
+
+.loading-message {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    /* Bạn có thể thêm spinner (icon xoay) ở đây nếu muốn */
 }
