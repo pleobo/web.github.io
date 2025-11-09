@@ -50,7 +50,6 @@ a {
     transition: transform 0.1s ease-out; 
 }
 
-
 .background-overlay {
     position: absolute;
     top: 0;
@@ -63,7 +62,6 @@ a {
     opacity: 1; 
     backdrop-filter: blur(20px); 
 }
-
 
 /* --- Thanh điều hướng (Navbar) --- */
 
@@ -79,7 +77,9 @@ a {
     z-index: 10;
 }
 .nav-links {
-    margin-left: 50px; 
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 /* HIỆU ỨNG XOAY CHO LOGO */
@@ -108,6 +108,17 @@ a {
     color: var(--primary-text-color);
     
 }
+
+
+.nav-links b{
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 99999999;
+}
+
 
 .btn-get-started {
     font-family: 'Courier New', Courier, monospace;
@@ -418,47 +429,53 @@ a {
 .btn.apple svg path {
     fill: #151717;
 }
+
+/* Thêm media query cho mobile */
 @media (max-width: 768px) {
     .main-title {
-        font-size: 50px; 
+        font-size: 50px; /* Giảm font-size */
         line-height: 1.1;
+        left: 0; /* Reset left để căn giữa */
+        position: static; /* Thay đổi để tránh tràn */
     }
-    .second-title {
-        font-size: 40px; 
+    .second-title, .second-title2 {
+        font-size: 40px; /* Giảm font-size */
         line-height: 1.1;
+        left: 0; /* Reset left */
+        position: static;
+    }
+    .subtitle {
+        font-size: 16px; /* Giảm font-size */
+        left: 0; /* Reset left */
+        position: static;
+        text-align: center; /* Căn giữa */
+        max-width: 90%; /* Giảm max-width */
+    }
+    .cta-buttons {
+        position: static; /* Thay đổi để tránh absolute gây lỗi */
+        flex-direction: column; /* Xếp dọc */
+        gap: 10px;
+    }
+    .btn {
+        padding: 12px 30px; /* Giảm padding */
+        font-size: 16px;
     }
     .form {
         width: 90%; /* Thu nhỏ form trên mobile */
     }
     .navbar {
-        padding: 20px 20px;
+        padding: 20px 20px; /* Giảm padding */
+    }
+    .nav-links {
+        margin-left: 20px; /* Giảm margin */
     }
 }
-/* From Uiverse.io by Tiagoadag */ 
-.card {
-    width: 450px;
-    height: 50px;
-    border-radius: 20px;
-    position:absolute;
-    margin-top: 0.25vw;
-    left: 37.5%;
-    z-index: 100;
-    perspective: 500px;
-    transition: all 0.4s ease;
-}
-.card:hover{
-    transform: scale(1.02) rotate(0deg) translate(0px, 0px) skewX(0deg);
-  box-shadow: 0 0px 30px rgba(0, 0, 0, 0.3);
-  opacity: 1;
-  filter: brightness(10);
-  color: #e4e4e4;
-  border-bottom-color: #d4d4d4;
-}
 
-.card2 {
-    height: 50px;
-    background-color: #1a1a1a10;
-    border-radius:20px;
-    transform: scale(0.98);
-    border-radius: 20px;
+/* Thêm media query cho .card trên mobile */
+@media (max-width: 768px) {
+    .card {
+        width: 90%; /* Sử dụng % để responsive */
+        left: 5%; /* Điều chỉnh left */
+        margin-top: 10px; /* Thay margin-top từ vw sang px */
+    }
 }
